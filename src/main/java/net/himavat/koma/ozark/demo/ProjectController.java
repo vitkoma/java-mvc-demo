@@ -38,7 +38,7 @@ public class ProjectController {
     @Path("/new")
     public String create(@BeanParam Project project) {
         projectRepository.save(project);
-        return list();
+        return "redirect:projects";
     }
 
     @GET
@@ -55,5 +55,11 @@ public class ProjectController {
         return list();
     }
 
+    @GET
+    @Path("/{id}/remove")
+    public String delete(@PathParam("id") Integer id) {
+        projectRepository.delete(id);
+        return "redirect:projects";
+    }
 
 }
