@@ -2,7 +2,6 @@ package net.himavat.koma.ozark.demo;
 
 import net.himavat.koma.ozark.demo.model.Project;
 import net.himavat.koma.ozark.demo.model.ProjectRepository;
-import net.himavat.koma.ozark.demo.model.ProjectRepositoryImpl;
 
 import javax.inject.Inject;
 import javax.mvc.Models;
@@ -10,10 +9,9 @@ import javax.mvc.annotation.Controller;
 import javax.ws.rs.*;
 
 /**
- * Created by koma on 27.10.15.
+ * JEE MVC demo controller.
  */
-@Controller
-@Path("projects")
+@Controller @Path("projects")
 public class ProjectController {
 
     @Inject
@@ -28,35 +26,30 @@ public class ProjectController {
         return "projects.jsp";
     }
 
-    @GET
-    @Path("/new")
+    @Path("/new") @GET
     public String showCreate() {
         return "editProject.jsp";
     }
 
-    @POST
-    @Path("/new")
+    @Path("/new") @POST
     public String create(@BeanParam Project project) {
         projectRepository.save(project);
         return "redirect:projects";
     }
 
-    @GET
-    @Path("/{id}")
+    @Path("/{id}") @GET
     public String get(@PathParam("id") Integer id) {
         models.put("project", projectRepository.get(id));
         return "editProject.jsp";
     }
 
-    @POST
-    @Path("/{id}")
+    @Path("/{id}") @POST
     public String update(@BeanParam Project project) {
         projectRepository.save(project);
-        return list();
+        return "redirect:projects";
     }
 
-    @GET
-    @Path("/{id}/remove")
+    @Path("/{id}/remove") @GET
     public String delete(@PathParam("id") Integer id) {
         projectRepository.delete(id);
         return "redirect:projects";

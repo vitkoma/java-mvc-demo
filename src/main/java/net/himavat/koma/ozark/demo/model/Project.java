@@ -3,7 +3,7 @@ package net.himavat.koma.ozark.demo.model;
 import javax.ws.rs.FormParam;
 
 /**
- * Created by koma on 27.10.15.
+ * The project data.
  */
 public class Project {
 

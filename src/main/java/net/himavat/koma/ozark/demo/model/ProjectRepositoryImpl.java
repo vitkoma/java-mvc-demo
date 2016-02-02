@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Created by koma on 27.10.15.
+ * A project repo dummy implementation.
  */
 @ApplicationScoped
 @Default
